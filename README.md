@@ -61,7 +61,7 @@ To the new way:
   
   let Parallax = CodeSplitComponent( import( "components/Parallax/Parallax.jsx"));
 ```
-or
+or (other new way)
 
 ```javascript
   
