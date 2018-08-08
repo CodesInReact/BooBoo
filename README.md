@@ -1,5 +1,5 @@
 # BooBoo
-A replacement for redux and enaforcer of Code Split
+A replacement for redux and enforcer of Code Split
 
 BooBoo does two things for you. 
 # State Management
