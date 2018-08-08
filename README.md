@@ -97,3 +97,4 @@ to this
   372 B     build\static\js\11.1df4baaa.chunk.js
 ```
 
+``` npm install --save Loadable axios``` we ain't npm yet boys
