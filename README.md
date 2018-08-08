@@ -61,6 +61,14 @@ To the new way:
   
   let Parallax = CodeSplitComponent( import( "components/Parallax/Parallax.jsx"));
 ```
+or
+
+```javascript
+  
+let Parallax = CodeSplitComponent( import( "components/Parallax/Parallax.jsx"), 
+class X extends React.Component { render() { return <div />} });
+
+```
 
 go from 
 ```javascript
