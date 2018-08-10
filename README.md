@@ -1,53 +1,6 @@
 # BooBoo
 A replacement for redux and enforcer of Code Split
 
-BooBoo does two things for you. 
-# State Management
-A react object that will remove the need for redux and other bulky libraries
-
-
-Very easy to use. No npm installs
-
-Include the file every where you would need data.
-
-```javascript
-  import {UpdateData,AddChangeEventWithArray,AddChangeEventWithObject,GetData}  from 'boobs'
-  
-  //Add an event hook for when a particular data key changes
-  //State is useful when you want to pass along parameters but not globlly
-  AddChangeEventWithObject({Image2Seen: (Data,State)=>
-            {
-                if(State && State.ShouldSetSetState)
-                {
-                  this.setState(Data);
-                }
-            }
-        });
-        
-```
-
-# A little bit later
-
-Update the Data
-```javascript
-
-  UpdateData({Image2Seen:true});
-```  
-or
-```javascript  
-  
- UpdateData({Image2Seen:true},{ShouldSetState:true});
-```
-
-You can also bind a lot of keys to one hook with 
-```javascript
-
-   AddChangeEventWithArray(["Image2Seen"], (Data,State)=>
-            {
-                this.setState(Data);
-            }
-        });
-```
 # Code Splitting
 Change all your imports from this oldness
 ```javascript
@@ -95,6 +48,109 @@ to this
   748 B     build\static\js\9.46930403.chunk.js
   509 B     build\static\js\12.87029f29.chunk.js
   372 B     build\static\js\11.1df4baaa.chunk.js
+
 ```
+BooBoo does two things for you. 
+# State Management
+A react object that will remove the need for redux and other bulky libraries
+
+
+Very easy to use. No npm installs
+
+Include the file every where you would need data.
+
+```javascript
+  import {UpdateData,AddChangeEventWithArray,AddChangeEventWithObject,GetData}  from 'boobs'
+  
+  //Add an event hook for when a particular data key changes
+  //State is useful when you want to pass along parameters but not globlly
+  AddChangeEventWithObject({Image2Seen: (Data,State)=>
+            {
+                if(State && State.ShouldSetSetState)
+                {
+                  this.setState(Data);
+                }
+            }
+        });
+        
+```
+
+# A little bit later
+
+Update the Data
+```javascript
+
+  UpdateData({Image2Seen:true});
+```  
+or
+```javascript  
+  
+ UpdateData({Image2Seen:true},{ShouldSetState:true});
+```
+
+You can also bind a lot of keys to one hook with 
+```javascript
+
+   AddChangeEventWithArray(["Image2Seen"], (Data,State)=>
+            {
+                this.setState(Data);
+            }
+        });
+```
+
+If you use this in a component you need to use/track event hooks. Or for any reason you just don't want it anymore
+#RemoveChangeEventWithID ID
+```javascript
+  constructor(props) { 
+  super(props); 
+  this.IDs_ = []
+  }
+  
+  componentDidMount()
+    {
+      this.IDs_.push(AddChangeEventWithObject({EmailEvent:this.EmailEventCallBack.bind(this)}));
+    }
+ 
+    componentWillUnmount()
+    {
+        this.IDs_.forEach(RemoveChangeEventWithID);
+    }
+    
+  ```
+  There is also `UpdateDataNoEvent` if you want to just store data.
+  
+  
+#CreateSingleHttp(Key,Request,OnError) 
+//triggers key automatically with data for you
+```javascript
+  Submit() {
+
+        let FinalData = GetData("UserContactObject");
+        CreateSingleHttp("EmailEvent",{url:"form.php",data:FinalData},this.HttpError.bind(this))
+
+    }
+#CreateRepeatingHttp
+//triggers key automatically with data for you intervallically
+```javascript
+  (TopLayerComponent)ComponentDidMount() {
+
+    let Interval  = 30000;
+      this.RepeaterID=  CreateRepeatingHttp({url:'/users/me'}, "MyDataKey", Interval,this.HttpError.bind(this))
+
+    }
+    #CancelRepeatingHttp
+    ```javascript
+    (TopLayerComponent)ComponentWillUnMount() {
+
+      CancelRepeatingHttp(this.RepeaterID);
+      
+
+    }
+
+
+Are all worth looking at. Save you a lot of time in your api->statemanagement calls. 
+
+
+
 
 ``` npm install --save Loadable axios``` we ain't npm yet boys
