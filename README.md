@@ -132,7 +132,9 @@ If you use this in a component you need to use/track event hooks. Or for any rea
 
     }
 #CreateRepeatingHttp
-//triggers key automatically with data for you intervallically
+
+//triggers key automatically with data for you with an interval
+
 ```javascript
   (TopLayerComponent)ComponentDidMount() {
 
@@ -141,7 +143,8 @@ If you use this in a component you need to use/track event hooks. Or for any rea
 
     }
     #CancelRepeatingHttp
-    ```javascript
+    
+```javascript
     (TopLayerComponent)ComponentWillUnMount() {
 
       CancelRepeatingHttp(this.RepeaterID);
@@ -149,8 +152,8 @@ If you use this in a component you need to use/track event hooks. Or for any rea
 
     }
 
-
-Are all worth looking at. Save you a lot of time in your api->statemanagement calls. 
+```
+All worth looking at. Save you a lot of time in your api->statemanagement calls. 
 
 
 
