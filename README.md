@@ -124,6 +124,7 @@ If you use this in a component you need to use/track event hooks. Or for any rea
   
 #CreateSingleHttp(Key,Request,OnError) 
 //triggers key automatically with data for you
+
 ```javascript
   Submit() {
 
@@ -131,6 +132,8 @@ If you use this in a component you need to use/track event hooks. Or for any rea
         CreateSingleHttp("EmailEvent",{url:"form.php",data:FinalData},this.HttpError.bind(this))
 
     }
+```
+
 #CreateRepeatingHttp
 
 //triggers key automatically with data for you with an interval
@@ -142,6 +145,7 @@ If you use this in a component you need to use/track event hooks. Or for any rea
       this.RepeaterID=  CreateRepeatingHttp({url:'/users/me'}, "MyDataKey", Interval,this.HttpError.bind(this))
 
     }
+```    
     #CancelRepeatingHttp
     
 ```javascript
