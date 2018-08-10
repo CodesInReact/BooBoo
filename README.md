@@ -99,7 +99,9 @@ You can also bind a lot of keys to one hook with
 ```
 
 If you use this in a component you need to use/track event hooks. Or for any reason you just don't want it anymore
+
 #RemoveChangeEventWithID ID
+
 ```javascript
   constructor(props) { 
   super(props); 
@@ -116,7 +118,7 @@ If you use this in a component you need to use/track event hooks. Or for any rea
         this.IDs_.forEach(RemoveChangeEventWithID);
     }
     
-  ```
+```
   There is also `UpdateDataNoEvent` if you want to just store data.
   
   
